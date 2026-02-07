@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://u31q06aqnpyl"]
+
+[ext_resource type="Script" uid="uid://b1tfxkxx0p32l" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://d3svyoj82rgis" path="res://assets/textures/space.jpg" id="2_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://c0hcceklnml8l" path="res://assets/textures/sun.png" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://f84hsugnqeiw" path="res://scenes/planet.tscn" id="4_o6xl0"]
+
+[node name="Main" type="Node2D" unique_id=1385688760]
+script = ExtResource("1_jyhfs")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1386329231]
+z_index = -10
+texture = ExtResource("2_tbgi4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1668427970]
+
+[node name="Sun" type="Sprite2D" parent="." unique_id=1056384020]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tefeu")
+
+[node name="OrbitTimer" type="Timer" parent="Sun" unique_id=1618093020]
+wait_time = 0.030000000000000002
+autostart = true
+
+[node name="Orbits" type="Node2D" parent="." unique_id=1800515291]
+
+[node name="Orbit1" type="Node2D" parent="Orbits" unique_id=235787756]
+
+[node name="Planet1" parent="Orbits/Orbit1" unique_id=449833004 instance=ExtResource("4_o6xl0")]
+position = Vector2(120, 0)
+
+[node name="Orbit2" type="Node2D" parent="Orbits" unique_id=1890546550]
+
+[node name="Planet2" parent="Orbits/Orbit2" unique_id=1700765910 instance=ExtResource("4_o6xl0")]
+position = Vector2(200, 0)
+
+[node name="Orbit3" type="Node2D" parent="Orbits" unique_id=1746419551]
+
+[node name="Planet3" parent="Orbits/Orbit3" unique_id=897855245 instance=ExtResource("4_o6xl0")]
+position = Vector2(280, 0)
+
+[connection signal="timeout" from="Sun/OrbitTimer" to="." method="_on_orbit_timer_timeout"]

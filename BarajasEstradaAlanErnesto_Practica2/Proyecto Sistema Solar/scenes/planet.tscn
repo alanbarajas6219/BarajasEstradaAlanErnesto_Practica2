@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://f84hsugnqeiw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcv8b"]
+
+[node name="Planet" type="Area2D" unique_id=449833004]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=145752725]
+scale = Vector2(0.25, 0.25)
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1159845883]
+shape = SubResource("CircleShape2D_jcv8b")
